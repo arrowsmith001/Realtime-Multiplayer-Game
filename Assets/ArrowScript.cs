@@ -1,22 +1,33 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class ArrowScript : MonoBehaviour
 {
+    public bool debug = false;
+    private PhotonView PV;
+
     // Start is called before the first frame update
     void Start()
     {
+        PV = GetComponent<PhotonView>();
 
+        if(debug) return;
+
+        if(!PV.IsMine) {
+            Destroy(GetComponent<Rigidbody2D>());
+            motionControlled = false;
+        }
     }
 
-    bool inMotion = true;
+    bool motionControlled = true;
 
     // Update is called once per frame
     void Update()
     {
-        if(inMotion){
+        if(motionControlled){
 
                 Vector3 direction = GetComponent<Rigidbody2D>().velocity.normalized;
 
@@ -41,7 +52,9 @@ public class ArrowScript : MonoBehaviour
         if(other.gameObject.GetComponent<Controller>() != null 
             && other.gameObject.GetComponent<Controller>() == this.controller) return;
 
-        inMotion = false;
+        if(other.gameObject.GetComponent<ArrowScript>() != null) return;
+
+        motionControlled = false;
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<BoxCollider2D>());
     }
@@ -51,5 +64,11 @@ public class ArrowScript : MonoBehaviour
     internal void PassReference(Controller controller)
     {
         this.controller = controller;
+    }
+
+    internal void MakeActive()
+    {
+            this.gameObject.AddComponent<Rigidbody2D>();
+            motionControlled = true;
     }
 }

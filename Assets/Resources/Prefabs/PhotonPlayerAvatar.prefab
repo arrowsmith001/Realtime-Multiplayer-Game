@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec93cdfdfaa39248895a8266e98f32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   projectile: {fileID: 8487660216092444020, guid: aecb27ad0742f5a43b927382e6c78f41, type: 3}
   left: 276
   right: 275
@@ -170,7 +171,7 @@ MonoBehaviour:
   headRaisedPosition: {fileID: 5322124426450406874}
   headCrouchedPosition: {fileID: 5322124426702065499}
   projectileExit: {fileID: 5322124426711022191}
-  shootForce: 5
+  shootForce: 12.41
 --- !u!50 &5322124426332623182
 Rigidbody2D:
   serializedVersion: 4
@@ -365,7 +366,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66be9ea47623630488022372d88268af, type: 3}
-  m_Color: {r: 0, g: 0.8386276, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.86389875, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

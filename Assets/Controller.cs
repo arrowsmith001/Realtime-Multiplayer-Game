@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,8 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
+    public bool debug = false;
+
     public GameObject projectile;
 
     private PhotonView PV;
@@ -16,6 +19,7 @@ public class Controller : MonoBehaviour
     }
 
     private void Start() {
+        if(debug) return;
         if(!PV.IsMine) {
             Destroy(GetComponent<Rigidbody2D>());
             if(PV.Owner.CustomProperties.ContainsKey("color")) 
@@ -23,30 +27,34 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public KeyCode left = KeyCode.LeftArrow;
-    public KeyCode right = KeyCode.RightArrow;
-    public KeyCode jump = KeyCode.UpArrow;
-    public KeyCode down = KeyCode.DownArrow;
-    
 
     public float moveSpeed = 3;
     public float jumpForce = 4;
 
-    public Transform head;
+    public Transform rotTarget;
+    public Transform arrowExit;
 
     public void ChangeColor(Color color)
     {
-        this.head.gameObject.GetComponent<SpriteRenderer>().color = color;
+        //this.head.gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 
     public Transform headRaisedPosition;
     public Transform headCrouchedPosition;
 
     void Move(){
-        // Turn head
+
+        if(Input.GetMouseButton(0)){
+            // Turn rotation
             Vector3 mouseScreen = Input.mousePosition;
             Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
-            head.rotation = (Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg));
+            rotTarget.rotation = (Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg));
+        }
+        else
+        {
+            rotTarget.rotation = Quaternion.Euler(0,0,0);
+        }
+
 
             // Get speed
             Vector3 vel = GetComponent<Rigidbody2D>().velocity;
@@ -64,10 +72,10 @@ public class Controller : MonoBehaviour
 
             // Duck
             if(Input.GetKey(KeyCode.DownArrow)){
-                head.transform.position = Vector3.Lerp(headCrouchedPosition.position, headRaisedPosition.position, Time.deltaTime);
+              //  head.transform.position = Vector3.Lerp(headCrouchedPosition.position, headRaisedPosition.position, Time.deltaTime);
             }else
             {
-                head.transform.position = Vector3.Lerp(headRaisedPosition.position, headCrouchedPosition.position, Time.deltaTime);
+              //  head.transform.position = Vector3.Lerp(headRaisedPosition.position, headCrouchedPosition.position, Time.deltaTime);
             }
     }
 
@@ -77,15 +85,25 @@ public class Controller : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject proj = Instantiate(projectile, projectileExit.position, head.rotation);
+
+        GameObject proj;
+
+        if(!debug) proj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Arrow"), projectileExit.position, arrowExit.rotation);
+        else {
+            proj = Instantiate(Resources.Load<GameObject>(Path.Combine("Prefabs", "Arrow")), projectileExit.position, arrowExit.rotation);
+            // proj.GetComponent<ArrowScript>().MakeActive();
+        }
+
+        proj.GetComponent<Rigidbody2D>().AddForce(arrowExit.transform.right * shootForce, ForceMode2D.Impulse);
         proj.GetComponent<ArrowScript>().PassReference(this);
-        proj.GetComponent<Rigidbody2D>().AddForce(head.transform.right * shootForce, ForceMode2D.Impulse);
+        proj.GetComponent<ArrowScript>().debug = debug;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PV.IsMine){
+        if(debug || PV.IsMine){
 
             Move();
 
