@@ -6,37 +6,37 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LegsMask
+  m_Name: FullMask
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
   - m_Path: Image
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/footIK.l
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/footIK.l/footIK.l_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/footIK.r
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/footIK.r/footIK.r_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/handIK.l
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/handIK.l/handIK.l_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/handIK.r
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/handIK.r/handIK.r_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/headIK
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/headIK/headIK_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/spine1
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/spine1/leg1.l
     m_Weight: 1
   - m_Path: Player/spine1/leg1.l/leg2.l
@@ -58,30 +58,32 @@ AvatarMask:
   - m_Path: Player/spine1/leg1.r/leg2.r/leg3.r/leg4.r/leg4.r_end
     m_Weight: 1
   - m_Path: Player/spine1/spine2
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/spine1/spine2/spine3
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Player/spine1/spine2/spine3/spine4
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.l
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.l/arm2.l
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.l/arm2.l/arm3.l
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.l/arm2.l/arm3.l/arm3.l_end
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.r
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.r/arm2.r
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.r/arm2.r/arm3.r
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/arm1.r/arm2.r/arm3.r/arm3.r_end
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/head
-    m_Weight: 0
-  - m_Path: Player/spine1/spine2/spine3/spine4/head/head_end
-    m_Weight: 0
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.l
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.l/arm2.l
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.l/arm2.l/arm3.l
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.l/arm2.l/arm3.l/arm3.l_end
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.r
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.r/arm2.r
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.r/arm2.r/arm3.r
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/arm1.r/arm2.r/arm3.r/arm3.r_end
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/head
+    m_Weight: 1
+  - m_Path: Player/spine1/spine2/spine3/spine4/swivel/head/head_end
+    m_Weight: 1
   - m_Path: Player_Mesh
-    m_Weight: 0
+    m_Weight: 1

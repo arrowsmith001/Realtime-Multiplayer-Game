@@ -16,6 +16,18 @@ public class PivotScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // Quaternion q;
+        
+        // if(Input.GetMouseButton(0)){
 
+        //     Vector3 mouseScreen = Input.mousePosition;
+        //     Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
+
+        //     transform.LookAt(mouse, Vector3.up);
+
+
+        // }
+
+    
     }
 }

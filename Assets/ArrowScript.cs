@@ -12,14 +12,14 @@ public class ArrowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PV = GetComponent<PhotonView>();
+        // PV = GetComponent<PhotonView>();
 
-        if(debug) return;
+        // if(debug) return;
 
-        if(!PV.IsMine) {
-            Destroy(GetComponent<Rigidbody2D>());
-            motionControlled = false;
-        }
+        // if(!PV.IsMine) {
+        //     Destroy(GetComponent<Rigidbody2D>());
+        //     motionControlled = false;
+        // }
     }
 
     bool motionControlled = true;
@@ -49,8 +49,8 @@ public class ArrowScript : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.GetComponent<Controller>() != null 
-            && other.gameObject.GetComponent<Controller>() == this.controller) return;
+        if(other.gameObject.GetComponent<PlayerController>() != null 
+            && other.gameObject.GetComponent<PlayerController>() == this.controller) return;
 
         if(other.gameObject.GetComponent<ArrowScript>() != null) return;
 
@@ -59,9 +59,9 @@ public class ArrowScript : MonoBehaviour
         Destroy(GetComponent<BoxCollider2D>());
     }
 
-    Controller controller;
+    PlayerController controller;
 
-    internal void PassReference(Controller controller)
+    internal void PassReference(PlayerController controller)
     {
         this.controller = controller;
     }

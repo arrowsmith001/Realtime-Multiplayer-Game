@@ -95,7 +95,7 @@ public class Controller : MonoBehaviour
         }
 
         proj.GetComponent<Rigidbody2D>().AddForce(arrowExit.transform.right * shootForce, ForceMode2D.Impulse);
-        proj.GetComponent<ArrowScript>().PassReference(this);
+        //proj.GetComponent<ArrowScript>().PassReference(this);
         proj.GetComponent<ArrowScript>().debug = debug;
         
     }
